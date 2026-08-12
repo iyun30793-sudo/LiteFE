@@ -1,9 +1,5 @@
-﻿using NAudio.Dmo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using System.Windows.Forms;
 using WMPLib;
 
 namespace WindowsFormsApp1
@@ -14,10 +10,17 @@ namespace WindowsFormsApp1
 
         public void MusicPlay()
         {
-            player.URL = @"C:\GitHub\LiteFE\LiteFETheme\Theme1.mp3";
-            player.controls.play();
-        }
+            string theme1Path = Path.Combine(Path.GetTempPath(),"Theme1.mp3");
 
+            File.WriteAllBytes(theme1Path, Properties.Resources.Theme1);
+
+            player.URL = theme1Path;
+
+            player.controls.play();
+            player.controls.currentPosition = 28;
+
+        }
+       
      
     }
 }

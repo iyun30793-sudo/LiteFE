@@ -12,9 +12,12 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        SoundManager sound = new SoundManager();
+
         public Form1()
         {
             InitializeComponent();
+            sound.MusicPlay();
         }
 
         private void button1_Click(object sender, EventArgs e)

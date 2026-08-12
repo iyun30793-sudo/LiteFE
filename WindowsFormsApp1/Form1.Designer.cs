@@ -28,13 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.Emblem = new System.Windows.Forms.PictureBox();
+            this.Title = new System.Windows.Forms.PictureBox();
+            this.Start = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Emblem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Title)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // Emblem
+            // 
+            this.Emblem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Emblem.Image = global::WindowsFormsApp1.Properties.Resources.Emblem;
+            this.Emblem.Location = new System.Drawing.Point(226, 46);
+            this.Emblem.Name = "Emblem";
+            this.Emblem.Size = new System.Drawing.Size(358, 215);
+            this.Emblem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Emblem.TabIndex = 1;
+            this.Emblem.TabStop = false;
+            // 
+            // Title
+            // 
+            this.Title.Image = global::WindowsFormsApp1.Properties.Resources.Title;
+            this.Title.Location = new System.Drawing.Point(193, 101);
+            this.Title.Name = "Title";
+            this.Title.Size = new System.Drawing.Size(430, 105);
+            this.Title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Title.TabIndex = 2;
+            this.Title.TabStop = false;
+            // 
+            // Start
+            // 
+            this.Start.BackColor = System.Drawing.Color.White;
+            this.Start.Font = new System.Drawing.Font("함초롬바탕 확장", 20F);
+            this.Start.Location = new System.Drawing.Point(309, 267);
+            this.Start.Name = "Start";
+            this.Start.Size = new System.Drawing.Size(191, 43);
+            this.Start.TabIndex = 3;
+            this.Start.Text = "시작하기";
+            this.Start.UseVisualStyleBackColor = false;
+            this.Start.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Start);
+            this.Controls.Add(this.Title);
+            this.Controls.Add(this.Emblem);
+            this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.Emblem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Title)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        private System.Windows.Forms.PictureBox Emblem;
+        private System.Windows.Forms.PictureBox Title;
+        private System.Windows.Forms.Button Start;
     }
 }
 

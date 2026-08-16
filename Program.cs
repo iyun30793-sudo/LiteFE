@@ -103,7 +103,7 @@ namespace SimpleRpg
 
                 if (key.Key == ConsoleKey.D1)
                 {
-                    c -= 2;
+                    c -= 3;
                     a -= 5;
                     b += 20;
                     isKillSward = true;
@@ -113,6 +113,9 @@ namespace SimpleRpg
                 }
                 else if (key.Key == ConsoleKey.D2)
                 {
+                    a += 6;
+                    b -= 4;
+                    c += 1;
                     Console.WriteLine("은창을 얻었다.");
                     break;
 
@@ -125,6 +128,10 @@ namespace SimpleRpg
 
                     Console.WriteLine("크리티컬 액스를 얻었다.");
                     break;
+                }
+                else
+                {
+                    Console.WriteLine("삐삐 입력오류 키보드 1, 2, 3만 눌러주세요.");
                 }
             }
 
@@ -163,6 +170,10 @@ namespace SimpleRpg
 
                     Game();
                     break;
+                }
+                else
+                {
+                    Console.WriteLine("삐삐 입력오류 키보드 1, 2만 눌러주세요.");
                 }
 
             }
@@ -216,6 +227,10 @@ namespace SimpleRpg
                     Robi();
                     break;
                 }
+                else
+                {
+                    Console.WriteLine("삐삐 입력오류 키보드 영타로 Y나 N을 눌러주세요.");
+                }
 
             }
         }
@@ -242,20 +257,27 @@ namespace SimpleRpg
                 float final = c;
                 if (y < b)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("히트!!!");
                     Task.Delay(500).Wait();
+                    Console.ForegroundColor= ConsoleColor.Red;
                     Console.WriteLine("**!크리티컬!**");
+                    Console.ResetColor();
                     final = c * 3;
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("히트");
+                    Console.ResetColor();
                 }
                 Enemy.Damage(final);
             }
             else
             {
-                Console.WriteLine("미스");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("미스.....");
+                Console.ResetColor();
                 Enemy.Damage(0);
             }
 
@@ -287,13 +309,18 @@ namespace SimpleRpg
                 if (y < crt)
                 {
                     finalDamage = str * 3; // 치명타시 배율 적용 (20)
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("맞았다.");
                     Task.Delay(500).Wait();
+                    Console.ForegroundColor= ConsoleColor.Red;
                     Console.WriteLine("** 치명타!!!!!! **");
+                    Console.ResetColor();
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("맞았다.");
+                    Console.ResetColor();
                 }
 
                 // 데미지는 단 한 번만 적용
@@ -301,18 +328,22 @@ namespace SimpleRpg
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("\n미스");
+                Console.ResetColor();
                 Thread.Sleep(300);
             }
 
             Task.Delay(500).Wait();
 
            int rr = aran.Next(0, 100);
-            if (rr < 40 && isKillSward)
+            if (rr < 36 && isKillSward)
             {
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\n 추격!!!");
                 Console.WriteLine("이어서 공격!!!");
-                Thread.Sleep(300);
+                Thread.Sleep(750);
+                Console.ResetColor();
                 Console.Clear();
                 SecoundAttack();
             }
@@ -344,20 +375,27 @@ namespace SimpleRpg
                 float final = c;
                 if (y < b)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("히트!!!");
                     Task.Delay(500).Wait();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("**!크리티컬!**");
+                    Console.ResetColor();
                     final = c * 3;
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("히트");
+                    Console.ResetColor();
                 }
                 Enemy.Damage(final);
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("미스");
+                Console.ResetColor();
                 Enemy.Damage(0);
             }
 
@@ -480,8 +518,9 @@ namespace SimpleRpg
             Thread.Sleep(100);
             if(hp <= 0)
             {
+                Thread.Sleep(750);
                 Console.WriteLine("적 쓰러졌다!!!!");
-                Thread.Sleep(100);
+                Thread.Sleep(800);
                 Console.Write("적:");
                 Task.Delay(100).Wait();
                 for(int i = 0; i < dieMesseage.Length; i++)
@@ -568,7 +607,7 @@ namespace SimpleRpg
         public void Mucic()
         {
             
-                var audio = new AudioFileReader("Theme.mp3");
+                var audio = new AudioFileReader("AttackTheme.mp3");
 
                 var output = new WaveOutEvent();
 
